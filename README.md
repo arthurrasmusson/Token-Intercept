@@ -1,13 +1,13 @@
 # Token-Intercept
 
-**Token-Intercept** is a Python library and server that allows you to seamlessly port your existing OpenAI API-based applications to use a local vLLM server running models like `facebook/opt-125m`. This enables you to run language models locally, reducing latency and improving privacy, without extensively modifying your existing codebase.
+**Token-Intercept** is a Python library and server that allows you to seamlessly port your existing OpenAI API-based applications to use a local vLLM or TensorRT-LLM server running models like `facebook/opt-125m`. This enables you to run language models locally, reducing latency and improving privacy, without extensively modifying your existing codebase.
 
 ## Table of Contents
 - [Features](#features)
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Getting Started](#getting-started)
-  - [Setting Up the vLLM Server](#setting-up-the-vllm-server)
+  - [Setting Up the vLLM or TensorRT-LLM Server](#setting-up-the-vllm-trt-server)
   - [Using token_intercept in Your Application](#using-token_intercept-in-your-application)
 - [Usage Example](#usage-example)
 - [Directory Structure](#directory-structure)
@@ -18,14 +18,14 @@
 - [License](#license)
 
 ## Features
-- **Seamless Integration:** Intercept and redirect OpenAI API calls to your local vLLM server with minimal code changes.
-- **FastAPI Server Wrapper:** A daemon server that ensures the vLLM server is running and translates API requests.
-- **Model Flexibility:** Run any Hugging Face-compatible model locally with vLLM.
+- **Seamless Integration:** Intercept and redirect OpenAI API calls to your local vLLM or TensorRT-LLM server with minimal code changes.
+- **FastAPI Server Wrapper:** A daemon server that ensures the vLLM or TensorRT-LLM server is running and translates API requests.
+- **Model Flexibility:** Run any Hugging Face-compatible model locally with vLLM or TensorRT-LLM.
 - **Portability:** Keep your existing codebase largely unmodified by simply importing the `token_intercept` module.
 
 ## Prerequisites
 - Python 3.8 or higher
-- vLLM installed
+- vLLM or TensorRT-LLM installed
 - Required Python packages:
   - `fastapi`
   - `uvicorn`
@@ -82,7 +82,7 @@ Note: Ensure that import token_intercept comes before import openai.
 
 ### Run Your Application
 
-Run your script as you normally would. The token_intercept module will redirect API calls to your local vLLM server.
+Run your script as you normally would. The token_intercept module will redirect API calls to your local vLLM or TensorRT-LLM server.
 
 ### Usage Example
 Suppose you have the following script using OpenAI's API:
@@ -212,4 +212,4 @@ Standard Error: token_intercept_error.log
 
 Testing the Setup
 
-After setting up, test your application to ensure that it's correctly communicating with the local vLLM server.
+After setting up, test your application to ensure that it's correctly communicating with the local vLLM or TensorRT-LLM server.
