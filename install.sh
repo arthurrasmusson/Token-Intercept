@@ -1,12 +1,12 @@
 #!/bin/bash
 
-# install.sh - Install script for vLLM-Intercept
+# install.sh - Install script for Token-Intercept
 # This script sets up the daemon_server.py as a systemd service.
 
 set -e
 
 # Variables
-SERVICE_NAME="vllm_intercept"
+SERVICE_NAME="token_intercept"
 SERVICE_FILE="/etc/systemd/system/${SERVICE_NAME}.service"
 USER="$(whoami)"
 WORKING_DIR="$(pwd)"
@@ -25,7 +25,7 @@ echo "Creating systemd service file..."
 
 sudo bash -c "cat > ${SERVICE_FILE}" <<EOL
 [Unit]
-Description=vLLM Intercept Daemon Service
+Description=Token Intercept Daemon Service
 After=network.target
 
 [Service]
@@ -34,8 +34,8 @@ ExecStart=${PYTHON_EXEC} ${WORKING_DIR}/daemon_server.py
 User=${USER}
 WorkingDirectory=${WORKING_DIR}
 Restart=on-failure
-StandardOutput=append:${WORKING_DIR}/vllm_intercept.log
-StandardError=append:${WORKING_DIR}/vllm_intercept_error.log
+StandardOutput=append:${WORKING_DIR}/token_intercept.log
+StandardError=append:${WORKING_DIR}/token_intercept_error.log
 
 [Install]
 WantedBy=multi-user.target
