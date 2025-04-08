@@ -39,7 +39,7 @@
 ### Clone the Repository
 
 ```bash
-git clone --recursive-submodules https://github.com/your_username/Token-Intercept.git
+git clone --recursive-submodules https://github.com/arthurrasmusson/Token-Intercept.git
 cd Token-Intercept
 ```
 
